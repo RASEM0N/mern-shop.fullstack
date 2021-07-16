@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { ProductType } from '../../types/cart'
 import { Card, CardImg } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import Rating from '../Rating/Rating'
 
 interface PropsType {
     product: ProductType
@@ -21,9 +22,7 @@ const Product: FunctionComponent<PropsType> = ({ product }) => {
                 </Link>
 
                 <Card.Text as="div">
-                    <div className="my-3">
-                        {product.rating} from {product.numReviews} reviews
-                    </div>
+                    <Rating value={product.rating} text={`${product.numReviews} reviews`} />
                 </Card.Text>
 
                 <Card.Text as="h3">{product.price}</Card.Text>
