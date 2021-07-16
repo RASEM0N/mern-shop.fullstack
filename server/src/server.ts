@@ -1,13 +1,16 @@
-import { Request, Response, Application } from 'express'
-import * as morgan from 'morgan'
-
 require('dotenv').config({
     path: './src/.env',
 })
+import { Request, Response, Application } from 'express'
+import * as morgan from 'morgan'
+import connectToDB from './db'
+
+console.log('◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄')
 
 // ----- START -----
 const express = require('express')
 const app: Application = express()
+connectToDB().catch((e) => console.log(`ERROR ${e.message}`))
 
 // --- MIDDLEWARES ---
 app.use(express.json())
