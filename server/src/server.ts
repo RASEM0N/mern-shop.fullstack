@@ -1,14 +1,12 @@
-import productRouter from './routes/product'
-
 require('dotenv').config({
     path: './src/.env',
 })
-import { Request, Response, Application } from 'express'
+import productRouter from './routes/product'
+import { Application } from 'express'
 import * as morgan from 'morgan'
+import * as cors from 'cors'
 import connectToDB from './db'
 import errorHandler from './middlewares/errorHandler'
-
-console.log('◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄')
 
 // ----- START -----
 const express = require('express')
@@ -16,6 +14,7 @@ const app: Application = express()
 connectToDB().catch((e) => console.log(`ERROR ${e.message}`))
 
 // --- MIDDLEWARES ---
+app.use(cors())
 app.use(express.json())
 app.use(morgan('dev'))
 
