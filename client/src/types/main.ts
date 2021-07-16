@@ -1,4 +1,4 @@
-import { OrderType, ProductType, UserType } from '../../../types_global/model'
+import { OrderType, ProductType, UserType } from '../../../global-types/model'
 
 export interface Product extends ProductType {}
 

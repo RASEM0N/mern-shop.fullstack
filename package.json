@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev:client": "npm start --prefix ./client",
-    "dev:server": "npm run nodemon --prefix ./server",
+    "dev:server": "npm run dev --prefix ./server",
     "dev": "concurrently \"yarn dev:client\" \"yarn dev:server\""
   },
   "author": "",
