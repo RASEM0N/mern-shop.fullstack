@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { LinkContainer } from 'react-router-bootstrap'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 
 const Header: FunctionComponent = () => {
@@ -6,7 +7,9 @@ const Header: FunctionComponent = () => {
         <header>
             <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect={true}>
                 <Container>
-                    <Navbar.Brand href="/">Shop</Navbar.Brand>
+                    <LinkContainer to="/">
+                        <Navbar.Brand>Shop</Navbar.Brand>
+                    </LinkContainer>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse
                         id="basic-navbar-nav"
@@ -14,14 +17,18 @@ const Header: FunctionComponent = () => {
                             flexGrow: 0,
                         }}>
                         <Nav className="me-auto">
-                            <Nav.Link href="/home">
-                                <i className="fas fa-shopping-cart"></i>
-                                Cart
-                            </Nav.Link>
-                            <Nav.Link href="/link">
-                                <i className="fas fa-user"></i>
-                                Sign In
-                            </Nav.Link>
+                            <LinkContainer to="/cart">
+                                <Nav.Link>
+                                    <i className="fas fa-shopping-cart" />
+                                    Cart
+                                </Nav.Link>
+                            </LinkContainer>
+                            <LinkContainer to="/sign-in">
+                                <Nav.Link>
+                                    <i className="fas fa-user" />
+                                    Sign In
+                                </Nav.Link>
+                            </LinkContainer>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

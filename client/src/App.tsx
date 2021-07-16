@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import Layout from './components/Layout/Layout'
 import { Container } from 'react-bootstrap'
+import HomeScreen from './screens/HomeScreen'
 
 const App: FunctionComponent = () => {
     // ...
@@ -9,7 +10,7 @@ const App: FunctionComponent = () => {
         <Layout>
             <main className="py-3">
                 <Container>
-                    <h1>Welcome To Shop</h1>
+                    <HomeScreen />
                 </Container>
             </main>
         </Layout>
