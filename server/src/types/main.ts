@@ -1,4 +1,4 @@
-import { OrderType, ProductType, ReviewType, UserType } from '../../../types_global/model'
+import { OrderType, ProductType, ReviewType, UserType } from '../../../global-types/model'
 
 export enum MODEL {
     PRODUCT = 'Product',

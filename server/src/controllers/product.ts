@@ -1,31 +1,35 @@
 import asyncHandler from '../middlewares/asyncHandler'
 import ErrorResponse from '../utils/errorResponse'
+import Product from '../models/product'
 
-class Product {
-    getAll = asyncHandler((req, res, next) => {
+class ProductCtl {
+    getAll = asyncHandler(async (req, res, next) => {
+        const products = await Product.find()
         return res.json({
             success: true,
             data: {
-                products: [],
+                products,
             },
         })
     })
 
-    getById = asyncHandler((req, res, next) => {
-        // const product = products.find((p) => p._id === req.params.id)
-        //
-        // if (!product) {
-        //     return next(new ErrorResponse('Product not found', 400))
-        // }
+    getById = asyncHandler(async (req, res, next) => {
+        const id = req.params.id
+
+        const product = await Product.findById(id)
+
+        if (!product) {
+            throw new ErrorResponse('Resource not found', 400)
+        }
 
         return res.json({
             success: true,
             data: {
-                product: null,
+                product: product,
             },
         })
     })
 }
 
-const ProductController = new Product()
+const ProductController = new ProductCtl()
 export default ProductController
