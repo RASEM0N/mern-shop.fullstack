@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouteMatch, Link } from 'react-router-dom'
-import products from '../mocks/products'
 import { Col, Image, ListGroup, Row, Card, Button } from 'react-bootstrap'
 import Rating from '../components/Rating/Rating'
+import axios from 'axios'
+import { Product } from '../types/main'
+import { ResponseProduct } from '../types/web'
 
 const ProductScreen = () => {
+    const [product, setProduct] = useState<Product | null>(null)
     const match = useRouteMatch<{
         id: string
     }>()
+    const productId = match.params.id
 
-    const product = products.find((p) => p._id === match.params.id)
+    useEffect(() => {
+        axios
+            .get<ResponseProduct>(`http://localhost:5001/api/product/${productId}`)
+            .then(({ data }) => {
+                if (data.data) setProduct(data.data.product)
+            })
+    }, [])
 
     if (!product) {
         return <div>Product not found...</div>

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { ProductType } from '../../types/cart'
+import { Product as ProductType } from '../../types/main'
 import { Card, CardImg } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Rating from '../Rating/Rating'

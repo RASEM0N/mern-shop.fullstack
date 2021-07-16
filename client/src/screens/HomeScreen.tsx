@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import Product from '../components/Product/Product'
-import { ProductType } from '../types/cart'
 import axios from 'axios'
-import { ResponseManyProducts } from '../../../server/src/types/web'
+import { Product as ProductType } from '../types/main'
+import { ResponseManyProducts } from '../types/web'
 
 const HomeScreen: FunctionComponent = () => {
     const [products, setProducts] = useState<ProductType[]>([])

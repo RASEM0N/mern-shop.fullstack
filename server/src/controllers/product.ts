@@ -1,5 +1,4 @@
 import asyncHandler from '../middlewares/asyncHandler'
-import products from '../mocks/products'
 import ErrorResponse from '../utils/errorResponse'
 
 class Product {
@@ -7,22 +6,22 @@ class Product {
         return res.json({
             success: true,
             data: {
-                products,
+                products: [],
             },
         })
     })
 
     getById = asyncHandler((req, res, next) => {
-        const product = products.find((p) => p._id === req.params.id)
-
-        if (!product) {
-            return next(new ErrorResponse('Product not found', 400))
-        }
+        // const product = products.find((p) => p._id === req.params.id)
+        //
+        // if (!product) {
+        //     return next(new ErrorResponse('Product not found', 400))
+        // }
 
         return res.json({
             success: true,
             data: {
-                product,
+                product: null,
             },
         })
     })
