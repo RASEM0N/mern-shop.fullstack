@@ -1,9 +1,12 @@
+import productRouter from './routes/product'
+
 require('dotenv').config({
     path: './src/.env',
 })
 import { Request, Response, Application } from 'express'
 import * as morgan from 'morgan'
 import connectToDB from './db'
+import errorHandler from './middlewares/errorHandler'
 
 console.log('◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄◄')
 
@@ -17,9 +20,10 @@ app.use(express.json())
 app.use(morgan('dev'))
 
 // ----- ROUTES -----
-app.get('/', (_: Request, res: Response) => {
-    res.send('Найс')
-})
+app.use('/api/product', productRouter)
+
+// --- BUG CATCHER ----
+app.use(errorHandler)
 
 // ---- .... ----
 const PORT = process.env.PORT || 5000
