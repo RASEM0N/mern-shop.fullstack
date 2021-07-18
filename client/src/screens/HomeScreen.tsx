@@ -1,17 +1,16 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import Product from '../components/Product/Product'
-import axios from 'axios'
 import { Product as ProductType } from '../types/main'
-import { ResponseManyProducts } from '../types/web'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch, RootState } from '../store/store'
+import fetchActionProductList from '../store/productList/productList.action'
 
 const HomeScreen: FunctionComponent = () => {
-    const [products, setProducts] = useState<ProductType[]>([])
-
+    const products = useSelector<RootState, ProductType[]>((state) => state.productList.products)
+    const dispatch = useDispatch<AppDispatch>()
     useEffect(() => {
-        axios.get<ResponseManyProducts>('http://localhost:5001/api/product').then(({ data }) => {
-            if (data.data) setProducts(data.data.products)
-        })
+        dispatch(fetchActionProductList.fetchProducts())
     }, [])
 
     return (

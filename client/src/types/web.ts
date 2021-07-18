@@ -3,8 +3,8 @@ import { Product } from './main'
 export interface Response<K extends string, T> {
     success: boolean
     data?: Record<K, T>
-    message?: string
+    message?: string | []
 }
 
-export type ResponseManyProducts = Response<'products', Product[]>
-export type ResponseProduct = Response<'product', Product>
+export type ResponseProductsList = Response<'products', Product[]>
+export type ResponseProductItem = Response<'product', Product>
